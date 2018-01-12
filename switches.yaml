@@ -1,0 +1,21 @@
+switch:
+  - platform: mqtt
+    name: "cyberhok"
+    state_topic: "stat/sonoff01/POWER"
+    command_topic: "cmnd/sonoff01/POWER"
+#    state_value_template: '{{ value_json.POWER }}'
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: mqtt
+    name: "cyberhok"
+    state_topic: "stat/sonoff01/POWER"
+    command_topic: "cmnd/sonoff01/POWER"
+#    state_value_template: '{{ value_json.POWER }}'
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
