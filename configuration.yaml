@@ -8,20 +8,14 @@ homeassistant:
 
   customize: !include customize.yaml
 
-# Show links to resources in log and frontend
-introduction:
-
-# Enables the frontend
 frontend:
 
-# Enables configuration UI
 config:
 
 http:
-  # Secrets are defined in the file secrets.yaml
   api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-#  base_url: !secret base_url
+  # base_url: !secret base_url
 
 updater:
   include_used_components: true
@@ -38,27 +32,18 @@ map:
 
 mqtt:
   broker: core-mosquitto
-  username: lampje
-  password: woo0moGh  
+  username: !secret mqtt_user
+  password: !secret mqtt_pass  
+
 sun:
 
 sensor:
   - platform: yr
   - platform: moon
 
-#binary_sensor: 
-#  - platform: mqtt
-#    name: "cyberhok"
-#    state_topic: "tele/sonoff01/LWT"
-#    state_value_template: "{{ value }}"
-#    payload_on: "Online"
-#    payload_off: "Offline"
-#    device_class: connectivity
-#  - platform: zoneminder
-
 weather:
   - platform: buienradar
-    name: 'nuenen'
+    name: !secret location
     latitude: !secret latitude
     longitude: !secret longitude
     forecast: True
@@ -74,78 +59,7 @@ panel_iframe:
     url: http://hassio.local:3218
 
 
-switch:
-  - platform: mqtt
-    name: "Secretair"
-    state_topic: "stat/sonoff01/POWER"
-    command_topic: "cmnd/sonoff01/POWER"
-#    state_value_template: '{{ value_json.POWER }}'
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-
-  - platform: mqtt
-    name: "Woonkamer"
-    state_topic: "stat/sonoff02/POWER"
-    command_topic: "cmnd/sonoff02/POWER"
-#    state_value_template: '{{ value_json.POWER }}'
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-
-  - platform: mqtt
-    name: "Keuken"
-    state_topic: "stat/sonoff03/POWER"
-    command_topic: "cmnd/sonoff03/POWER"
-#    state_value_template: '{{ value_json.POWER }}'
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-
-  - platform: mqtt
-    name: "GangBG"
-    state_topic: "stat/sonoff04/POWER"
-    command_topic: "cmnd/sonoff04/POWER"
-#    state_value_template: '{{ value_json.POWER }}'
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-
-  - platform: mqtt
-    name: "Gang1"
-    state_topic: "stat/sonoff05/POWER"
-    command_topic: "cmnd/sonoff05/POWER"
-#    state_value_template: '{{ value_json.POWER }}'
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-
-  - platform: mqtt
-    name: "GangZ"
-    state_topic: "stat/sonoff06/POWER"
-    command_topic: "cmnd/sonoff06/POWER"
-#    state_value_template: '{{ value_json.POWER }}'
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-
-  - platform: mqtt
-    name: "Zolder"
-    state_topic: "stat/sonoff07/POWER"
-    command_topic: "cmnd/sonoff07/POWER"
-#    state_value_template: '{{ value_json.POWER }}'
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-
-
+switch: !include switches.yaml
   
 tts:
   - platform: google
@@ -155,3 +69,5 @@ cloud:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+device_tracker: !include device_tracker.yaml
+

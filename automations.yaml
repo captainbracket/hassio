@@ -1,0 +1,20 @@
+- alias: 'Thuis'
+  trigger:
+    platform: state
+    entity_id: device_tracker.1v1
+    from: 'not_home'
+    to: 'home'
+  action:
+    service: switch.turn_on
+    entity_id: group.Zolder
+
+- alias: 'Weg'
+  trigger:
+    platform: state
+    entity_id: device_tracker.1v1
+    from: 'home'
+    to: 'not_home'
+  action:
+    service: switch.turn_off
+    entity_id: group.Zolder
+
