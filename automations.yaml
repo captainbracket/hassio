@@ -18,3 +18,51 @@
     service: switch.turn_off
     entity_id: group.Zolder
 
+
+- alias: 'Rule 1 Light on in the evening'
+  trigger:
+    # Prefix the first line of each trigger configuration
+    # with a '-' to enter multiple
+    - platform: sun
+      event: sunset
+      offset: '-00:30:00'
+    - platform: state
+      entity_id: group.Beneden
+      to: 'home'
+  condition:
+    # Prefix the first line of each condition configuration
+    # with a '-'' to enter multiple
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: time
+      after: '16:30:00'
+      before: '23:00:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.Beneden
+
+# Turn off lights when everybody leaves the house
+- alias: 'Rule 2 - Away Mode'
+  trigger:
+    platform: state
+    entity_id: group.all_devices
+    to: 'not_home'
+  action:
+    service: light.turn_off
+    entity_id: group.Beneden
+
+# Notify when Paulus leaves the house in the evening
+- alias: 'Leave Home notification'
+  trigger:
+    platform: zone
+    event: leave
+    zone: zone.home
+    entity_id: device_tracker.1v1
+  condition:
+    condition: time
+    after: '20:00'
+  action:
+    service: notify.notify
+    data:
+      message: '1v1 left the house'
