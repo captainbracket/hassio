@@ -71,6 +71,7 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 device_tracker: !include device_tracker.yaml
 
+
 binary_sensor:
   - platform: workday
     country: NL
