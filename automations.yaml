@@ -1,52 +1,41 @@
-- alias: 'Thuis'
+- alias: "WakeUp"
   trigger:
-    platform: state
-    entity_id: device_tracker.1v1
-    from: 'not_home'
-    to: 'home'
-  condition: 
-    condition: and
-    conditions:
-      - condition: sun
-        after: sunset
-        after_offset: "-0:30:00"
-      - condition: state
-        entity_id: group.Beneden
-        state: 'off'
+    - platform: time
+      at: '07:30:00'
   action:
-    service: switch.turn_on
-    entity_id: group.Beneden
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - group.Beneden
 
-- alias: 'Weg'
+- alias: "Vertrokken"
   trigger:
-    platform: state
-    entity_id: device_tracker.1v1
-    from: 'home'
-    to: 'not_home'
-  condition:
-    condition: and  
-    conditions:
-      - condition: sun
-        after: sunrise
-        after_offset: "-0:30:00"
-      - condition: state
-        entity_id: group.Beneden  
-        state: 'off'
+    - platform: time
+      at: '8:30:00'
   action:
-    service: switch.turn_off
-    entity_id: group.Zolder
+    - service: homeassistant.turn_off
+      data:
+        entity_id:
+          - group.Beneden
 
-- alias: 'Leave Home notification'
+
+- alias: "Thuiskomst"
   trigger:
-    platform: zone
-    event: leave
-    zone: zone.home
-    entity_id: device_tracker.1v1
-  condition:
-    condition: time
-    after: '07:00'
+    - platform: time
+      at: '17:00:00'
   action:
-    service: notify.notify
-    data:
-      message: '1v1 left the house'
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - group.Beneden
+
+- alias: "Slapen"
+  trigger:
+    - platform: time
+      at: '23:00:00'
+  action:
+    - service: homeassistant.turn_off
+      data:
+        entity_id:
+          - group.Beneden
 
