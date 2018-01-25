@@ -68,4 +68,53 @@
     payload_off: "OFF"
     retain: true
 
+  - platform: mqtt
+    name: "Gang1ste"
+    state_topic: "stat/sonoff08/POWER"
+    command_topic: "cmnd/sonoff08/POWER"
+#    state_value_template: '{{ value_json.POWER }}'
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Slaapkamer"
+    state_topic: "stat/sonoff09/POWER"
+    command_topic: "cmnd/sonoff09/POWER"
+#    state_value_template: '{{ value_json.POWER }}'
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Cyberhok"
+    state_topic: "stat/sonoff10/POWER"
+    command_topic: "cmnd/sonoff10/POWER"
+#    state_value_template: '{{ value_json.POWER }}'
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "Boeven"
+    state_topic: "stat/sonoff11/POWER"
+    command_topic: "cmnd/sonoff11/POWER"
+#    state_value_template: '{{ value_json.POWER }}'
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+  - platform: mqtt
+    name: "tbd"
+    state_topic: "stat/sonoff12/POWER"
+    command_topic: "cmnd/sonoff12/POWER"
+#    state_value_template: '{{ value_json.POWER }}'
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
 

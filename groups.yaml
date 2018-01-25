@@ -12,6 +12,12 @@
     entities:
       - group.Zolder
 
+  1ste_view:
+    view: yes
+    name: 1ste
+    entities:
+      - group.1ste
+
 # Groups
 
   Beneden:
@@ -35,3 +41,16 @@
       - switch.GangZ
       - sensor.Zolder
       - switch.Zolder
+
+  1ste:
+    name: 1ste
+    entities:
+      - sensor.Gang1ste
+      - switch.Gang1ste
+      - sensor.Slaapkamer
+      - switch.Slaapkamer
+      - sensor.Cyberhok
+      - switch.Cyberhok
+      - sensor.Boeven
+      - switch.Boeven
+
