@@ -109,7 +109,7 @@
     retain: true
 
   - platform: mqtt
-    name: "tbd"
+    name: "Badkamer"
     state_topic: "stat/sonoff12/POWER"
     command_topic: "cmnd/sonoff12/POWER"
 #    state_value_template: '{{ value_json.POWER }}'

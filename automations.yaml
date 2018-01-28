@@ -7,6 +7,9 @@
       data:
         entity_id:
           - group.Beneden
+          - switch.Slaapkamer
+          - switch.Badkamer
+          - switch.Gang1ste
 
 - alias: "Vertrokken"
   trigger:
@@ -17,7 +20,8 @@
       data:
         entity_id:
           - group.Beneden
-
+          - group.1ste
+          - group.Zolder
 
 - alias: "Thuiskomst"
   trigger:
@@ -38,4 +42,5 @@
       data:
         entity_id:
           - group.Beneden
-
+          - group.1ste
+          - group.Zolder

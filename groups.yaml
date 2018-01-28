@@ -53,4 +53,5 @@
       - switch.Cyberhok
       - sensor.Boeven
       - switch.Boeven
+      - switch.Badkamer
 
