@@ -2,6 +2,10 @@
   trigger:
     - platform: time
       at: '07:30:00'
+  condition:
+    condition: state
+    entity_id: 'binary_sensor.workday_sensor'
+    state: 'on'
   action:
     - service: homeassistant.turn_on
       data:
@@ -15,6 +19,10 @@
   trigger:
     - platform: time
       at: '8:30:00'
+  condition:
+    condition: state
+    entity_id: 'binary_sensor.workday_sensor'
+    state: 'on'
   action:
     - service: homeassistant.turn_off
       data:
@@ -27,6 +35,10 @@
   trigger:
     - platform: time
       at: '17:00:00'
+  condition:
+    condition: state
+    entity_id: 'binary_sensor.workday_sensor'
+    state: 'on'
   action:
     - service: homeassistant.turn_on
       data:
@@ -37,6 +49,10 @@
   trigger:
     - platform: time
       at: '23:00:00'
+  condition:
+    condition: state
+    entity_id: 'binary_sensor.workday_sensor'
+    state: 'on'
   action:
     - service: homeassistant.turn_off
       data:
