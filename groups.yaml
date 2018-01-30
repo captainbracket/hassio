@@ -23,35 +23,23 @@
   Beneden:
     name: Beneden
     entities:
-      - sensor.Secretair
       - switch.Secretair
-      - sensor.Woonkamer
       - switch.Woonkamer
-      - sensor.Keuken
       - switch.Keuken
-      - sensor.GangBG
       - switch.GangBG
-      - sensor.Schuur
       - switch.Schuur      
-
-  zolder:
-    name: Zolder
-    entities:
-      - sensor.GangZ
-      - switch.GangZ
-      - sensor.Zolder
-      - switch.Zolder
 
   1ste:
     name: 1ste
     entities:
-      - sensor.Gang1ste
       - switch.Gang1ste
-      - sensor.Slaapkamer
       - switch.Slaapkamer
-      - sensor.Cyberhok
       - switch.Cyberhok
-      - sensor.Boeven
       - switch.Boeven
       - switch.Badkamer
 
+  zolder:
+    name: Zolder
+    entities:
+      - switch.GangZ
+      - switch.Zolder
