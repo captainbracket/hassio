@@ -1,7 +1,7 @@
 - alias: "WakeUp"
   trigger:
     - platform: time
-      at: '07:30:00'
+      at: '07:40:00'
   condition:
     condition: state
     entity_id: 'binary_sensor.workday_sensor'
@@ -33,8 +33,9 @@
 
 - alias: "Thuiskomst"
   trigger:
-    - platform: time
-      at: '17:00:00'
+    platform: sun
+    event: sunset
+    offset: "-00:30:00"
   condition:
     condition: state
     entity_id: 'binary_sensor.workday_sensor'
@@ -44,6 +45,8 @@
       data:
         entity_id:
           - group.Beneden
+          - switch.Gang1ste
+          - switch.Slaapkamer
 
 - alias: "Slapen"
   trigger:
@@ -60,3 +63,4 @@
           - group.Beneden
           - group.1ste
           - group.Zolder
+

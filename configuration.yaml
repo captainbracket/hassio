@@ -41,12 +41,24 @@ sensor:
   - platform: yr
   - platform: moon
 
+binary_sensor:
+  - platform: iss
+  - platform: workday
+    country: NL
+    workdays: [ mon, tue, wed, thu, fri ]
+
 weather:
   - platform: buienradar
     name: !secret location
     latitude: !secret latitude
     longitude: !secret longitude
     forecast: True
+
+camera:
+  - platform: generic
+    name: Meteo
+    still_image_url: https://www.yr.no/place/Netherlands/North_Brabant/Eindhoven/meteogram.svg
+    content_type: 'image/svg+xml'
     
 google:
   client_id: !secret google_client_id
@@ -72,7 +84,3 @@ script: !include scripts.yaml
 device_tracker: !include device_tracker.yaml
 
 
-binary_sensor:
-  - platform: workday
-    country: NL
-    workdays: [ mon, tue, wed, thu, fri ]

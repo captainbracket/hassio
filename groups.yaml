@@ -43,3 +43,10 @@
     entities:
       - switch.GangZ
       - switch.Zolder
+
+  boeven:
+    name: Boeven
+    entities:
+      - device.Yoran
+      - device.Nolan
+
