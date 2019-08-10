@@ -9,9 +9,7 @@ homeassistant:
   customize: !include customize.yaml
 
 frontend:
-
 config:
-
 http:
   api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
@@ -21,6 +19,8 @@ updater:
   include_used_components: true
 
 discovery:
+
+ios:
 
 conversation:
 
@@ -60,24 +60,29 @@ camera:
     still_image_url: https://www.yr.no/place/Netherlands/North_Brabant/Eindhoven/meteogram.svg
     content_type: 'image/svg+xml'
     
-google:
-  client_id: !secret google_client_id
-  client_secret: !secret google_client_secret
+light:
+  - platform: flux_led
+    automatic_add: true
+    
+#google:
+#  client_id: !secret google_client_id
+#  client_secret: !secret google_client_secret
 
-panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: http://hassio.local:3218
-
-
-switch: !include switches.yaml
-  
-tts:
-  - platform: google
+#panel_iframe:
+#  configurator:
+#    title: Configurator
+#    icon: mdi:wrench
+#    url: http://hassio.local:3218
+ 
+#tts:
+#  - platform: google_translate
+#    service_name: google_say
 
 cloud:
 
+system_health:
+
+switch: !include switches.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
