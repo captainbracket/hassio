@@ -1,13 +1,3 @@
-- alias: "MagicMorning"
-  trigger:
-    platform: time
-    at: '07:00'
-  action:
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - switch.Zolder
-
 - alias: "WakeUp"
   trigger:
     - platform: time
@@ -41,18 +31,6 @@
           - group.Beneden
           - group.1ste
           - group.Zolder
-
-- alias: "MagicEvening"
-  trigger:
-    platform: sun
-    event: sunset
-    offset: "-01:00:00"
-  action:
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - switch.Zolder
-
 
 - alias: "Thuiskomst"
   trigger:
