@@ -1,7 +1,17 @@
+- alias: "MagicMorning"
+  trigger:
+    platform: time
+    at: '07:00'
+  action:
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - switch.Zolder
+
 - alias: "WakeUp"
   trigger:
     - platform: time
-      at: '07:40:00'
+      at: '07:00:00'
   condition:
     condition: state
     entity_id: 'binary_sensor.workday_sensor'
@@ -11,14 +21,15 @@
       data:
         entity_id:
           - group.Beneden
-          - switch.Slaapkamer
+          - light.Slaapkamer_2
+          - light.Cyberhok
           - switch.Badkamer
           - switch.Gang1ste
 
 - alias: "Vertrokken"
   trigger:
     - platform: time
-      at: '8:30:00'
+      at: '8:45:00'
   condition:
     condition: state
     entity_id: 'binary_sensor.workday_sensor'
@@ -31,11 +42,23 @@
           - group.1ste
           - group.Zolder
 
+- alias: "MagicEvening"
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-01:00:00"
+  action:
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - switch.Zolder
+
+
 - alias: "Thuiskomst"
   trigger:
     platform: sun
     event: sunset
-    offset: "-00:30:00"
+    offset: "-00:45:00"
   condition:
     condition: state
     entity_id: 'binary_sensor.workday_sensor'
@@ -46,7 +69,9 @@
         entity_id:
           - group.Beneden
           - switch.Gang1ste
-          - switch.Slaapkamer
+          - light.Slaapkamer_2
+          - light.Cyberhok
+          - switch.Badkamer
 
 - alias: "Slapen"
   trigger:
@@ -63,4 +88,46 @@
           - group.Beneden
           - group.1ste
           - group.Zolder
+
+#- alias: "Schuur"
+#  trigger:
+#    - platform: state
+#      entity_id: device.vphone
+#      to: 'home'    
+#  action:
+#    - service: homeassistant.turn_off
+#      data:
+#        entity_id:
+#          - switch.Schuur
+
+- alias: "helmhome"
+  initial_state: False
+  hide_entity: False
+  trigger:
+    - platform: state
+      entity_id: device.scala_rider_q1, device.v_phone
+      from: 'not_home'
+      to: 'home'
+  action:
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - light.Cyberhok
+          - light.Schuur
+       
+- alias: "helmweg"                 
+  initial_state: True
+  hide_entity: False
+  trigger:                                   
+    - platform: state
+      entity_id: device.scala_rider_q1, device.v_phone
+      from: 'home'              
+      to: 'not_home'
+  action:         
+    - service: homeassistant.turn_off
+      data:                
+        entity_id:            
+          - light.Cyberhok
+          - light.Schuur                     
+               
 

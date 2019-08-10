@@ -22,6 +22,8 @@ updater:
 
 discovery:
 
+ios:
+
 conversation:
 
 history:
@@ -74,9 +76,12 @@ panel_iframe:
 switch: !include switches.yaml
   
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 cloud:
+
+system_health:
 
 group: !include groups.yaml
 automation: !include automations.yaml

@@ -24,17 +24,22 @@
     name: Beneden
     entities:
       - switch.Secretair
+      - light.secretair
       - switch.Woonkamer
+      - light.woonkamer
+      - switch.Secretairtje
       - switch.Keuken
+      - light.keukentafel
       - switch.GangBG
+      - switch.Aanrecht
       - switch.Schuur      
 
   1ste:
     name: 1ste
     entities:
       - switch.Gang1ste
-      - switch.Slaapkamer
-      - switch.Cyberhok
+      - light.Slaapkamer_2
+      - light.Cyberhok
       - switch.Boeven
       - switch.Badkamer
 
@@ -44,9 +49,9 @@
       - switch.GangZ
       - switch.Zolder
 
-  boeven:
-    name: Boeven
-    entities:
-      - device.Yoran
-      - device.Nolan
+#  boeven:
+#    name: Boeven
+#    entities:
+#      - device.Yoran
+#      - device.Nolan
 

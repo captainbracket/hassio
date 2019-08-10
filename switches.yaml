@@ -79,7 +79,7 @@
     retain: true
 
   - platform: mqtt
-    name: "Slaapkamer"
+    name: "Secretairtje"
     state_topic: "stat/sonoff09/POWER"
     command_topic: "cmnd/sonoff09/POWER"
 #    state_value_template: '{{ value_json.POWER }}'
@@ -89,7 +89,7 @@
     retain: true
 
   - platform: mqtt
-    name: "Cyberhok"
+    name: "Aanrecht"
     state_topic: "stat/sonoff10/POWER"
     command_topic: "cmnd/sonoff10/POWER"
 #    state_value_template: '{{ value_json.POWER }}'
