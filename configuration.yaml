@@ -15,6 +15,8 @@ http:
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: !secret base_url
 
+system_health:
+
 updater:
   include_used_components: true
 
@@ -41,12 +43,6 @@ sensor:
   - platform: yr
   - platform: moon
 
-binary_sensor:
-  - platform: iss
-  - platform: workday
-    country: NL
-    workdays: [ mon, tue, wed, thu, fri ]
-
 weather:
   - platform: buienradar
     name: !secret location
@@ -60,29 +56,11 @@ camera:
     still_image_url: https://www.yr.no/place/Netherlands/North_Brabant/Eindhoven/meteogram.svg
     content_type: 'image/svg+xml'
     
-light:
-  - platform: flux_led
-    automatic_add: true
-    
-#google:
-#  client_id: !secret google_client_id
-#  client_secret: !secret google_client_secret
-
-#panel_iframe:
-#  configurator:
-#    title: Configurator
-#    icon: mdi:wrench
-#    url: http://hassio.local:3218
- 
-#tts:
-#  - platform: google_translate
-#    service_name: google_say
-
 cloud:
 
-system_health:
-
+#includes
 switch: !include switches.yaml
+light: !include lights.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
