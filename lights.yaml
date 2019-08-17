@@ -1,3 +1,5 @@
 - platform: flux_led
-  automatic_add: true
-    
+#  automatic_add: true
+  devices:
+    10.56.73.100:  
+      name: Billy 

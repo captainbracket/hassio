@@ -33,12 +33,13 @@
       - switch.GangBG
       - switch.Aanrecht
       - switch.Schuur      
+      - light.Billy
 
   1ste:
     name: 1ste
     entities:
       - switch.Gang1ste
-      - light.Slaapkamer_2
+      - light.Slaapkamer
       - light.Cyberhok
       - switch.Boeven
       - switch.Badkamer

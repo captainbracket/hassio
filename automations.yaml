@@ -11,7 +11,7 @@
       data:
         entity_id:
           - group.Beneden
-          - light.Slaapkamer_2
+          - light.Slaapkamer
           - light.Cyberhok
           - switch.Badkamer
           - switch.Gang1ste
@@ -47,7 +47,7 @@
         entity_id:
           - group.Beneden
           - switch.Gang1ste
-          - light.Slaapkamer_2
+          - light.Slaapkamer
           - light.Cyberhok
           - switch.Badkamer
 
