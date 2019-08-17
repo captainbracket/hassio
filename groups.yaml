@@ -25,15 +25,16 @@
     entities:
       - switch.Secretair
       - light.secretair
-      - switch.Woonkamer
+      - switch.Tafel
       - light.woonkamer
       - switch.Secretairtje
       - switch.Keuken
       - light.keukentafel
       - switch.GangBG
       - switch.Aanrecht
-      - switch.Schuur      
       - light.Billy
+      - switch.Schuur      
+      
 
   1ste:
     name: 1ste
