@@ -43,6 +43,10 @@ sensor:
   - platform: yr
   - platform: moon
 
+binary_sensor:
+  - platform: workday
+    country: NL
+
 weather:
   - platform: buienradar
     name: !secret location

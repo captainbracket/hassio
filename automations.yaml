@@ -36,11 +36,11 @@
   trigger:
     platform: sun
     event: sunset
-    offset: "-00:45:00"
-  condition:
-    condition: state
-    entity_id: 'binary_sensor.workday_sensor'
-    state: 'on'
+    offset: "-01:00:00"
+#  condition:
+#    condition: state
+#    entity_id: 'binary_sensor.workday_sensor'
+#    state: 'on'
   action:
     - service: homeassistant.turn_on
       data:
@@ -66,3 +66,28 @@
           - group.Beneden
           - group.1ste
           - group.Zolder
+
+- alias: "testaan"
+  trigger:
+    platform: state
+    entity_id: device_tracker.vphone
+    from: 'away'
+    to: 'home'
+  action: 
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - switch.schuur
+
+- alias: "testuit"
+  trigger:                                                                                                                
+    platform: state                                                                                                       
+    entity_id: device_tracker.vphone                                                                                      
+    from: 'home'
+    to: 'away'
+  action:                                                                                                                 
+    - service: homeassistant.turn_off
+      data:                                                                                                               
+        entity_id:                                                                                                        
+          - switch.schuur             
+ 
