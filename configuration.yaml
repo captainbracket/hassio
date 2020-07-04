@@ -50,20 +50,12 @@ media_player:
     host: 10.56.73.113
 
 gdacs:
+  - radius: 500
 
-#weather:
-#  - platform: buienradar
-#    name: !secret location
-#    latitude: !secret latitude
-#    longitude: !secret longitude
-#    forecast: True
+weather:
+  - platform: buienradar
+    forecast: True
 
-#camera:
-#  - platform: generic
-#    name: Meteo
-#    still_image_url: https://www.yr.no/place/Netherlands/North_Brabant/Eindhoven/meteogram.svg
-#    content_type: 'image/svg+xml'
-    
 #cloud:
 
 #includes
@@ -74,4 +66,3 @@ automation: !include automations.yaml
 scene: !include scenes.yaml
 #script: !include scripts.yaml
 #device_tracker: !include device_tracker.yaml
-
