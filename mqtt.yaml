@@ -2,9 +2,3 @@ broker: localhost
 port: 8883
 client_id: lampje
 keepalive: 60
-#username: home
-#password: xxxx
-#certificate: /etc/mosquitto/conf.d/ca.crt
-#client_key: /etc/mosquitto/conf.d/ca.key
-#client_cert: /etc/mosquitto/conf.d/ca.crt
-#protocol: 3.1
