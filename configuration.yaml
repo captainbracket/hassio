@@ -10,10 +10,8 @@ homeassistant:
 
 frontend:
 config:
-http:
-  api_password: !secret http_password
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: !secret base_url
+
+default_config:
 
 system_health:
 
@@ -47,27 +45,33 @@ binary_sensor:
   - platform: workday
     country: NL
 
-weather:
-  - platform: buienradar
-    name: !secret location
-    latitude: !secret latitude
-    longitude: !secret longitude
-    forecast: True
+media_player:
+  - platform: squeezebox
+    host: 10.56.73.113
 
-camera:
-  - platform: generic
-    name: Meteo
-    still_image_url: https://www.yr.no/place/Netherlands/North_Brabant/Eindhoven/meteogram.svg
-    content_type: 'image/svg+xml'
+gdacs:
+
+#weather:
+#  - platform: buienradar
+#    name: !secret location
+#    latitude: !secret latitude
+#    longitude: !secret longitude
+#    forecast: True
+
+#camera:
+#  - platform: generic
+#    name: Meteo
+#    still_image_url: https://www.yr.no/place/Netherlands/North_Brabant/Eindhoven/meteogram.svg
+#    content_type: 'image/svg+xml'
     
-cloud:
+#cloud:
 
 #includes
 switch: !include switches.yaml
 light: !include lights.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
-device_tracker: !include device_tracker.yaml
-
+scene: !include scenes.yaml
+#script: !include scripts.yaml
+#device_tracker: !include device_tracker.yaml
 

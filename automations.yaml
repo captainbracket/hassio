@@ -1,93 +1,150 @@
-- alias: "WakeUp"
+- alias: WakeUp
   trigger:
-    - platform: time
-      at: '07:00:00'
+  - platform: time
+    at: 07:00:00
   condition:
     condition: state
-    entity_id: 'binary_sensor.workday_sensor'
+    entity_id: binary_sensor.workday_sensor
     state: 'on'
   action:
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - group.Beneden
-          - light.Slaapkamer
-          - light.Cyberhok
-          - switch.Badkamer
-          - switch.Gang1ste
-
-- alias: "Vertrokken"
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+      - group.Beneden
+      - light.Slaapkamer
+      - light.Cyberhok
+      - switch.Badkamer
+      - switch.Gang1ste
+  id: 76ced8c107b941fdbb9a55f5ec6ff178
+- alias: Vertrokken
   trigger:
-    - platform: time
-      at: '8:45:00'
+  - platform: time
+    at: '8:45:00'
   condition:
     condition: state
-    entity_id: 'binary_sensor.workday_sensor'
+    entity_id: binary_sensor.workday_sensor
     state: 'on'
   action:
-    - service: homeassistant.turn_off
-      data:
-        entity_id:
-          - group.Beneden
-          - group.1ste
-          - group.Zolder
-
-- alias: "Thuiskomst"
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+      - group.Beneden
+      - group.1ste
+      - group.Zolder
+  id: 878c54585c05486b8e36e9122da530b9
+- alias: Thuiskomst
   trigger:
     platform: sun
     event: sunset
-    offset: "-01:00:00"
-#  condition:
-#    condition: state
-#    entity_id: 'binary_sensor.workday_sensor'
-#    state: 'on'
+    offset: -01:00:00
   action:
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - group.Beneden
-          - switch.Gang1ste
-          - light.Slaapkamer
-          - light.Cyberhok
-          - switch.Badkamer
-
-- alias: "Slapen"
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+      - group.Beneden
+      - switch.Gang1ste
+      - light.Slaapkamer
+      - light.Cyberhok
+      - switch.Badkamer
+  id: 7cf42d680fa74349ba9a600a49d52b40
+- id: e0cda7c8d1f14279b52cbbb29d00f66d
+  alias: Slapen
   trigger:
-    - platform: time
-      at: '23:00:00'
+  - at: '23:00:00'
+    platform: time
   condition:
-    condition: state
-    entity_id: 'binary_sensor.workday_sensor'
+  - condition: state
+    entity_id: binary_sensor.workday_sensor
     state: 'on'
   action:
-    - service: homeassistant.turn_off
-      data:
-        entity_id:
-          - group.Beneden
-          - group.1ste
-          - group.Zolder
-
-- alias: "testaan"
+  - data: {}
+    entity_id: all
+    service: light.turn_off
+  - data: {}
+    entity_id: all
+    service: light.turn_off
+- alias: testaan
   trigger:
     platform: state
     entity_id: device_tracker.vphone
-    from: 'away'
-    to: 'home'
-  action: 
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - switch.schuur
-
-- alias: "testuit"
-  trigger:                                                                                                                
-    platform: state                                                                                                       
-    entity_id: device_tracker.vphone                                                                                      
-    from: 'home'
-    to: 'away'
-  action:                                                                                                                 
-    - service: homeassistant.turn_off
-      data:                                                                                                               
-        entity_id:                                                                                                        
-          - switch.schuur             
- 
+    from: away
+    to: home
+  action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+      - switch.schuur
+  id: db0362907ac34d4994a254731bb4ba50
+- alias: testuit
+  trigger:
+    platform: state
+    entity_id: device_tracker.vphone
+    from: home
+    to: away
+  action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+      - switch.schuur
+  id: ecdf7516371442bebefc9ada1d1fd065
+- alias: Vakantie
+  trigger:
+  - platform: time
+    at: '20:07:00'
+  condition:
+    condition: state
+    entity_id: binary_sensor.workday_sensor
+    state: 'on'
+  action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+      - switch.Gang1ste
+      - switch.Schuur
+      - switch.Secretairtje
+      - light.Billy
+      - light.Keukentafel
+      - light.Woonkamer
+  id: 8c9d684d46f548ac9058a217911c6d8a
+- id: '1580417846751'
+  alias: Turn off the lights when I leave home
+  description: ''
+  trigger:
+  - entity_id: person.martijn
+    event: leave
+    platform: zone
+    zone: zone.home
+  condition: []
+  action:
+  - data: {}
+    entity_id: all
+    service: light.turn_off
+  - data: {}
+    entity_id: all
+    service: switch.turn_off
+  - data: {}
+    entity_id: all
+    service: media_player.turn_off
+- id: '1580418015141'
+  alias: Turn On the lights when I come home
+  description: ''
+  trigger:
+  - entity_id: person.martijn
+    event: enter
+    platform: zone
+    zone: zone.home
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.schuur
+    service: switch.turn_on
+  - scene: scene.waking_up
+  - data: {}
+    entity_id: media_player.v
+    service: media_player.turn_on
+  - data: {}
+    entity_id: media_player.slaapkamer
+    service: media_player.turn_on
+  - data: {}
+    entity_id: all
+    service: media_player.media_play
