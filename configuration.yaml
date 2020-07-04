@@ -50,7 +50,7 @@ media_player:
     host: 10.56.73.113
 
 gdacs:
-  - radius: 500
+  radius: 500
 
 weather:
   - platform: buienradar
